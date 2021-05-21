@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+	<div class=header>
+		<img src="logo.png" style="padding:5px;"/>
+		<ul>
+			<li><a href="home.html">Home</a></li>
+			<li>About</li>
+		</ul>
+	</div>
+	<div id="background">
+		<button id="toggleModal" onclick="openModal()">CLICK ME</button>
+	</div>
+	<div class="modal" id="modal">
+		<div class="modalcontent">
+			<h1 id="titleContainer">Welcome To Social Native (Desktop)</h1>
+			<div id="imgContainer"></div>
+			<p>Click Outside to dismiss</p>
+		</div>
+	</div>
+</body>
+</html>
+<style>
+	html {
+		height: 100%;
+	}
+	body {
+		height: inherit;
+		margin:0px;
+	}
+	a {
+		text-decoration:none;
+	}
+	button {
+		margin: 15% auto;
+		background-color:black;
+		color:white;
+		width:25%;
+		height:10%;
+		border-radius:12px;
+		border:none;
+		font-size:2vw;
+	}
+	button:hover {
+		background-color:grey;
+		color:black;
+		box-shadow:1px 1px 10px 6px lightgrey;
+	}
+	#background {
+		height: 100%;
+		text-align:center;
+	}
+	.header 
+	{
+		box-shadow:2px 2px 7px 0px lightgrey;
+	}
+	.header ul {
+		list-style:none;
+		float:right;
+		position:relative;
+		top:90px;
+		margin-right:2%;
+		width:20%;
+	}
+	.header ul li {
+		display:inline-block;
+		width:42%;
+		font-size 1vw;
+		padding:3%;
+		border-radius: 10px;
+	}
+	.header ul li:hover  {
+		background-color:lightgrey;
+		color:white;
+	}
+	.modal {
+		display: none;
+		z-index: 1; /* Sit on top */
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background-color: lightgrey;
+	}
+	.modalcontent {
+		text-align:center;
+		background-color: white;
+		margin: 12% auto;
+		padding: 5px;
+		width: 50%;
+		border-radius:18px;
+	}
+	#imgContainer { 
+		height:150px;
+		width:150px;
+		border-radius:15px;
+		margin:auto;
+		background: url("logo.png") no-repeat; 
+	}
+
+	@media screen and (max-width: 600px) 
+	{
+		.header ul {
+			width:37%;
+		}	
+		.modalcontent {
+			width:80%;
+			font-size:10pt;
+			margin: 17% auto;
+		}
+		#imgContainer {
+			background: url("logoMobile.png") no-repeat;
+			background-size: contain;
+		}
+	}
+</style>
+<script>
+    var title = document.getElementById('titleContainer');
+    var Image = document.getElementById('imgContainer');
+    var modal = document.getElementById('modal');
+    var bkGround = document.getElementById('background');
+
+    function openModal()
+    {
+        modal.style.display = "block";
+		bkGround.style.display = "none";
+    }
+
+	//Not required as I have ommitted the close button.
+    //function dismissModal()
+    //{
+    //    modal.style.display = "none";
+		  bkGround.style.display = "block";
+    //}
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+			modal.style.display = "none";
+			bkGround.style.display = "block";
+        }
+	}
+
+	window.onresize = function () {
+		if (window.innerWidth < 600)
+		{
+			title.innerText = "Welcome To Social Native (Mobile)";
+		}
+		else {
+			title.innerText = "Welcome  To Social Native (Desktop)"
+		}
+	}
+
+</script>
